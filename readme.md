@@ -1,5 +1,13 @@
 # Spring Boot 3 and Infinispan 14
 
+## Problem Statement
+Some warning regarding `sub-optimal read performance` displayed on both Infinispan Server and Client.
+
+## Versions
+- Red Hat Data Grid 8.4.6 Server
+- 14.0.21.Final-redhat-00001 for Client
+
+
 ## Infinispan Server 14 Logs
 ```
 2023-12-19 13:29:09,373 INFO  (main) [BOOT] JVM Java HotSpot(TM) 64-Bit Server VM Oracle Corporation 20.0.1+9-jvmci-23.0-b12
@@ -22,7 +30,7 @@
 
 ## Generate Data
 ```
-$ curl -kv http://localhost:8080/generat
+$ curl -kv http://localhost:8080/generate
 ```
 
 ## Querying
