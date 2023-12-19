@@ -7,6 +7,30 @@ Some warning regarding `sub-optimal read performance` displayed on both Infinisp
 - Red Hat Data Grid 8.4.6 Server
 - 14.0.21.Final-redhat-00001 for Client
 
+## Cache
+```xml
+<?xml version="1.0"?>
+<replicated-cache name="user-cache" mode="SYNC" remote-timeout="300000" statistics="true">
+	<encoding>
+		<key media-type="application/x-protostream"/>
+		<value media-type="application/x-protostream"/>
+	</encoding>
+	<locking concurrency-level="1000" isolation="READ_COMMITTED" acquire-timeout="60000" striping="false"/>
+	<transaction mode="NON_XA" auto-commit="true" stop-timeout="30000" locking="PESSIMISTIC" reaper-interval="30000" complete-timeout="60000" notifications="true" transaction-manager-lookup="org.infinispan.transaction.lookup.GenericTransactionManagerLookup"/>
+	<memory storage="OFF_HEAP"/>
+    
+    <!-- set this to limit the default query size -->
+    <query default-max-results="10000" />
+	
+    <indexing enabled="true" storage="filesystem" path="user-cache">
+		<indexed-entities>
+			<indexed-entity>user.User</indexed-entity>
+		</indexed-entities>
+	</indexing>
+	<state-transfer timeout="300000"/>
+</replicated-cache>
+```
+
 
 ## Infinispan Server 14 Logs
 ```
